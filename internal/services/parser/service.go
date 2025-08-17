@@ -75,6 +75,7 @@ func (p *parser) PrintRequest(r *Request) {
 	for key, value := range r.Headers {
 		fmt.Printf("\t%s : %s\n", key, value)
 	}
+
 	fmt.Println("}")
 	fmt.Print("Body: ")
 	fmt.Println(string(r.Body))
