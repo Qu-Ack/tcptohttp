@@ -15,12 +15,13 @@ func ParseFirstLine(body string) {
 
 	req := strings.Split(body, "\r\n")
 
-	for _, line := range req {
+	for i, line := range req {
+		fmt.Println("%d line", i+1)
 		feats := strings.Split(line, " ")
 
 		for _, feat := range feats {
-			fmt.Println(feat)
+			fmt.Printf("%s feat", feat)
 		}
-
+		fmt.Println("")
 	}
 }

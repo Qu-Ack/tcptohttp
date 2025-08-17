@@ -3,9 +3,14 @@ package main
 import (
 	"fmt"
 	"net"
+
+	"github.com/Qu-Ack/tcptohttp/internal/services/parser"
 )
 
 func main() {
+
+	parse := parser.NewParser("http/1.1")
+
 	ln, err := net.Listen("tcp", ":8080")
 
 	if err != nil {
@@ -27,8 +32,7 @@ func main() {
 		if err != nil {
 			fmt.Println("error while reading the connection body")
 		}
-		fmt.Println(string(body))
-
-		ParseFirstLine(string(body))
+		request := parse.ParseRequest(body)
+		parse.PrintRequest(request)
 	}
 }
